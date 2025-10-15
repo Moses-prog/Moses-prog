@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/dynamicw/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /usr/local/bin/composer install --no-dev --optimize-autoloader
+    - /usr/local/bin/php artisan migrate --force
