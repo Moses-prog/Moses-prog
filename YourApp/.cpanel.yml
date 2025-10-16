@@ -1,6 +1,13 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/dynamicw/YourApp/
+    - export DEPLOYPATH=/home/dynamicw/public_html/
     - /bin/bash -c "composer install --no-dev --optimize-autoloader"
-    - /bin/rsync -av --exclude=".git" --exclude=".cpanel.yml" --exclude="storage/logs/*" --exclude="storage/framework/sessions/*" --exclude="storage/framework/views/*" --exclude="bootstrap/cache/*" . $DEPLOYPATH
+    - /bin/bash -c "npm install"
+    - /bin/bash -c "npm run build"
+    - /bin/bash -c "php artisan optimize:clear"
+    - /bin/bash -c "php artisan config:cache"
+    - /bin/bash -c "php artisan route:cache"
+    - /bin/bash -c "php artisan view:cache"
+    - /bin/bash -c "php artisan storage:link"
+    - /bin/rsync -av --delete --exclude='.git' --exclude='.cpanel.yml' --exclude='node_modules' --exclude='.env' . ${DEPLOYPATH}
