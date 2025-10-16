@@ -9,10 +9,9 @@ use App\Http\Controllers\FileDownloadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LandingPageController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'index']);
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 

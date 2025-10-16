@@ -12,6 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         .glassmorphism {
             background: rgba(0, 0, 0, 0.5);
@@ -21,26 +22,7 @@
 </head>
 <body class="bg-gray-900 text-white font-sans antialiased">
     <div class="relative">
-        <!-- Header -->
-        <header class="sticky top-0 left-0 right-0 z-20 glassmorphism">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="/" class="text-xl font-bold">YourApp</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#how-it-works" class="text-white hover:text-gray-300">How It Works</a>
-                    <a href="#features" class="text-white hover:text-gray-300">Features</a>
-                    <a href="#faqs" class="text-white hover:text-gray-300">FAQs</a>
-                </div>
-                <div>
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Dashboard</a>
-                        @else
-                            <a href="{{ route('register') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">Register</a>
-                        @endauth
-                    @endif
-                </div>
-            </nav>
-        </header>
+        @include('layouts.navigation')
 
         <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
@@ -88,19 +70,19 @@
                 <div class="grid md:grid-cols-4 gap-8">
                     <div class="text-center" data-aos="zoom-in">
                         <svg class="w-16 h-16 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <h3 class="text-xl font-semibold">Fast Boost Delivery</h3>
+                        <h3 class="text-xl font-semibold">Social Media Boost</h3>
                     </div>
                     <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
                         <svg class="w-16 h-16 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
-                        <h3 class="text-xl font-semibold">Affiliate Commission</h3>
+                        <h3 class="text-xl font-semibold">Affiliate System</h3>
                     </div>
                     <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
                         <svg class="w-16 h-16 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.78-2.67 9.345M12 11c0-3.517 1.009-6.78 2.67-9.345m0 18.69C17.331 16.78 20 13.517 20 10c0-4.418-3.582-8-8-8S4 5.582 4 10c0 3.517 2.669 6.78 5.33 9.345" /></svg>
-                        <h3 class="text-xl font-semibold">AI Interaction Earnings</h3>
+                        <h3 class="text-xl font-semibold">AI Interaction</h3>
                     </div>
                     <div class="text-center" data-aos="zoom-in" data-aos-delay="600">
-                        <svg class="w-16 h-16 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                        <h3 class="text-xl font-semibold">Mobile Friendly</h3>
+                        <svg class="w-16 h-16 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8"></path></svg>
+                        <h3 class="text-xl font-semibold">And many more...</h3>
                     </div>
                 </div>
             </div>
@@ -155,47 +137,47 @@
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-down">See It In Action</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <img src="https://via.placeholder.com/600x400.png?text=App+Screenshot+1" alt="App Screenshot 1" class="rounded-lg" data-aos="zoom-in-right">
-                    <img src="https://via.placeholder.com/600x400.png?text=App+Screenshot+2" alt="App Screenshot 2" class="rounded-lg" data-aos="zoom-in-left">
+                    <img src="https://via.placeholder.com/600x400.png?text=App+Screenshot+1" alt="App Screenshot 1" class="rounded-lg" data-aos="zoom-in-right" style="width: 100%; height: auto; object-fit: cover;">
+                    <img src="https://via.placeholder.com/600x400.png?text=App+Screenshot+2" alt="App Screenshot 2" class="rounded-lg" data-aos="zoom-in-left" style="width: 100%; height: auto; object-fit: cover;">
                 </div>
             </div>
         </section>
 
         <!-- FAQs -->
         <section id="faqs" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6" data-aos="fade-up">
+            <div class="container mx-auto px-6" data-aos="fade-up" x-data="{ openFaq: null }">
                 <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
                 <div class="max-w-3xl mx-auto">
                     <div class="border-b border-gray-700">
-                        <button class="w-full text-left py-4 focus:outline-none">
+                        <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full text-left py-4 focus:outline-none">
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-semibold">How do I earn?</span>
-                                <span>&#9660;</span>
+                                <span x-text="openFaq === 1 ? '-' : '+'">&#9660;</span>
                             </div>
                         </button>
-                        <div class="mt-2 text-gray-400 hidden">
+                        <div x-show="openFaq === 1" x-collapse class="mt-2 text-gray-400">
                             <p>You can earn by reselling our services or through our affiliate program, which pays a 20% commission on every sale made through your referral link.</p>
                         </div>
                     </div>
                     <div class="border-b border-gray-700">
-                        <button class="w-full text-left py-4 focus:outline-none">
+                        <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full text-left py-4 focus:outline-none">
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-semibold">How do I register?</span>
-                                <span>&#9660;</span>
+                                <span x-text="openFaq === 2 ? '-' : '+'">&#9660;</span>
                             </div>
                         </button>
-                        <div class="mt-2 text-gray-400 hidden">
+                        <div x-show="openFaq === 2" x-collapse class="mt-2 text-gray-400">
                             <p>Click on the "Register" button on the top right corner of the page and fill out the registration form. It's that simple!</p>
                         </div>
                     </div>
                     <div class="border-b border-gray-700">
-                        <button class="w-full text-left py-4 focus:outline-none">
+                        <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full text-left py-4 focus:outline-none">
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-semibold">How long to boost?</span>
-                                <span>&#9660;</span>
+                                <span x-text="openFaq === 3 ? '-' : '+'">&#9660;</span>
                             </div>
                         </button>
-                        <div class="mt-2 text-gray-400 hidden">
+                        <div x-show="openFaq === 3" x-collapse class="mt-2 text-gray-400">
                             <p>The delivery time for our boost services depends on the package you choose. However, we always strive to deliver as fast as possible.</p>
                         </div>
                     </div>
@@ -231,30 +213,13 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 py-8">
-            <div class="container mx-auto px-6 text-center">
-                <div class="mb-4">
-                    <a href="#" class="text-white hover:text-gray-300 mx-2">About</a>
-                    <a href="#" class="text-white hover:text-gray-300 mx-2">Terms</a>
-                    <a href="#" class="text-white hover:text-gray-300 mx-2">Privacy</a>
-                </div>
-                <p>&copy; {{ date('Y') }} YourApp. All rights reserved.</p>
-            </div>
-        </footer>
+        @include('layouts.footer')
 
     </div>
     <script>
         AOS.init({
             duration: 1000,
             once: true,
-        });
-
-        document.querySelectorAll('#faqs button').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                content.classList.toggle('hidden');
-            });
         });
 
         // Smooth scrolling
