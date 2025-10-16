@@ -1,25 +1,22 @@
-
 <?php
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
+use App\Mail\ContactMail;
 use App\Models\Contact;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required',
-        ]);
+        $contact = Contact::create($request->validated());
 
-        Contact::create($request->all());
+        Mail::to('admin@example.com')->send(new ContactMail($contact));
 
         return redirect('/')->with('success', 'Your message has been sent successfully!');
     }
